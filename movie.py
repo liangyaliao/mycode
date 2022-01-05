@@ -2,7 +2,7 @@
 
 while True:
     Question01 = input("Guess what kind of movie I like most, Adventure, Action, Comedy, Drama, Crime, Fantasy, History, Horror, Musical, Mystery, Romance, Sci-Fi, War  or else?: ")
-    answer = str(input())
+    answer = " "
 
     if answer == "Action":
         print("Congrats")
@@ -23,14 +23,14 @@ while True:
     elif answer == "Mystery":
          print("Not in my whole life.  Try again!")
     elif answer == "Romance":
-         print("Nope.  Try again!")
+         print("Nope.I am not in my 20th.  Try again!")
     elif answer == "Sci-Fi":
-         print("Nope.  Try again!")
+         print("Nope. not the most.  Try again!")
     elif answer == "War":
-         print("Nope.  Try again!")
+         print("Nope. I don't like war at all.  Try again!")
     
     else:
-        print("Try again!")
+        print("nooppee!")
 
     play = input("Play again? (y/n): ")
     if play != "y":

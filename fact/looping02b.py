@@ -11,3 +11,11 @@ with open("dnsservers.txt", "r") as dnsfile:
         print(svr, end="")
 # no need to close our file - closed automatically
 
+
+
+#!/usr/bin/env python3
+with open("dnsservers.txt", "r") as dnsfile:
+    dnslist = dnsfile.readlines()
+    for svr in dnslist:
+        print(svr, end="")
+

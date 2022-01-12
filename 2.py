@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+"""it is done with Chad's wisdom.If you enter the GameId, you will see the top 10's Gamedate, offense team and defense team. """
+
 import pandas as pd
 header_list= ["GameId", "GameDate", "OffenseTeam", "DefenseTeam"]
 df = pd.read_csv('nfl2020.txt', index_col="GameId")

@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots()
 
-fruits = ['silver','gold','platinum','copper']
+pm = ['silver','gold','platinum','copper']
 counts = [100, 90, 20,10]
 bar_labels = ['red', 'blue', '_red', 'orange']
 bar_colors = ['tab:red', 'tab:blue', 'tab:red', 'tab:orange']
 
-ax.bar(fruits, counts, label=bar_labels, color=bar_colors)
+ax.bar(pm, counts, label=bar_labels, color=bar_colors)
 
 ax.set_ylabel('precious metal I like ')
 ax.set_title('precious metal supply by kind')

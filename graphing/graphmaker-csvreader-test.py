@@ -16,3 +16,8 @@ ax.set_title('Fruit supply by kind and color')
 ax.legend(title='Fruit color')
 
 plt.show()
+
+plt.savefig("/home/student/mycode/graphing/2018summaryv2.png")
+    # Save to "~/static"
+plt.savefig("/home/student/static/2018summaryv2.png")
+print("Graph created.")

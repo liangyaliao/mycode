@@ -17,7 +17,7 @@ from pygame import mixer
 # convert_to_audio("Hello, welcome to lillian's snake game")
 
 pygame.init() #initiate pygame
-WINDOW_SIZE = 300 #to initiate screen's width and length
+WINDOW_SIZE = 600 #to initiate screen's width and length
 screen = pygame.display.set_mode([WINDOW_SIZE]*2) #set screen
 
 #load and play welcome.mp3
@@ -27,7 +27,7 @@ mixer.music.play(-1)
 bgmusic = mixer.Sound('class_project/bgmusic.mp3')
 bgmusic.play()
 
-snake_unit_size = 10
+snake_unit_size = 20
 def snake(snake_unit_size, snake_body):
     """create a segment of snake"""
     for unit in snake_body:
@@ -35,7 +35,7 @@ def snake(snake_unit_size, snake_body):
 
 def rando():
     """get a random x or y axis for snake and food"""
-    return round(random.randrange(0, WINDOW_SIZE - snake_unit_size) / 10.0) * 10.0
+    return round(random.randrange(0, WINDOW_SIZE - snake_unit_size) / snake_unit_size) * snake_unit_size
 
 def choose():
     """after game over, player will need to choose continue or exit"""
@@ -54,7 +54,7 @@ def message(msg, color):
     """set up message style"""
     font_style = pygame.font.SysFont("times new roman", 18)
     mesg = font_style.render(msg, True, color)
-    screen.blit(mesg, [WINDOW_SIZE / 20, WINDOW_SIZE / 3])
+    screen.blit(mesg, [WINDOW_SIZE / 10, WINDOW_SIZE / 3])
 
 
 def game_over():

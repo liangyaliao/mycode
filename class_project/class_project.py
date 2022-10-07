@@ -22,7 +22,7 @@ screen = pygame.display.set_mode([WINDOW_SIZE]*2) #set screen
 
 #load and play welcome.mp3
 mixer.music.load('welcome.mp3')
-mixer.music.play()
+mixer.music.play(-1)
 
 bgmusic = mixer.Sound('class_project/bgmusic.mp3')
 bgmusic.play()

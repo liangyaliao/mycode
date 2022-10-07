@@ -27,15 +27,15 @@ mixer.music.play()
 bgmusic = mixer.Sound('class_project/bgmusic.mp3')
 bgmusic.play()
 
-SNAKE_BLOCK_SIZE = 10
-def snake(SNAKE_BLOCK_SIZE, snake_body):
+snake_unit_size = 10
+def snake(snake_unit_size, snake_body):
     """create a segment of snake"""
-    for x in snake_body:
-        pygame.draw.rect(screen, "blue", [x[0], x[1], SNAKE_BLOCK_SIZE, SNAKE_BLOCK_SIZE])
+    for unit in snake_body:
+        pygame.draw.rect(screen, "blue", [unit[0], unit[1], snake_unit_size, snake_unit_size])
 
 def rando():
     """get a random x or y axis for snake and food"""
-    return round(random.randrange(0, WINDOW_SIZE - SNAKE_BLOCK_SIZE) / 10.0) * 10.0
+    return round(random.randrange(0, WINDOW_SIZE - snake_unit_size) / 10.0) * 10.0
 
 def choose():
     """after game over, player will need to choose continue or exit"""
@@ -89,7 +89,7 @@ def main():
     while running:
         #screen.fill("black")
         #setup background image for screen
-        bgimg = pygame.image.load('class_project/grass.jpg') 
+        bgimg = pygame.image.load('class_project/grass.jpg')
         bgimg_top = screen.get_height() - bgimg.get_height()
         bgimg_left = screen.get_width()/2 - bgimg.get_width()/2
         screen.blit(bgimg, (bgimg_left,bgimg_top))
@@ -97,19 +97,19 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    snake_x_axis_change = -SNAKE_BLOCK_SIZE
+                    snake_x_axis_change = -snake_unit_size
                     snake_y_axis_change = 0
                 elif event.key == pygame.K_RIGHT:
-                    snake_x_axis_change = SNAKE_BLOCK_SIZE
+                    snake_x_axis_change = snake_unit_size
                     snake_y_axis_change = 0
                 elif event.key == pygame.K_UP:
-                    snake_y_axis_change = -SNAKE_BLOCK_SIZE
+                    snake_y_axis_change = -snake_unit_size
                     snake_x_axis_change = 0
                 elif event.key == pygame.K_DOWN:
-                    snake_y_axis_change = SNAKE_BLOCK_SIZE
+                    snake_y_axis_change = snake_unit_size
                     snake_x_axis_change = 0
                 elif event.key == pygame.K_ESCAPE:
-                    running = False  
+                    running = False
                 elif event.key == pygame.K_f:
                     snake_speed +=1
                 else:
@@ -121,7 +121,7 @@ def main():
         snake_x_axis += snake_x_axis_change
         snake_y_axis += snake_y_axis_change
         pygame.draw.rect(screen, "red", [apple_x_axis, \
-                        apple_y_axis, SNAKE_BLOCK_SIZE, SNAKE_BLOCK_SIZE])
+                        apple_y_axis, snake_unit_size, snake_unit_size])
         #the new segment will become snake's head, head will concat with its prior body
         snake_head = []
         snake_head.append(snake_x_axis)
@@ -131,13 +131,13 @@ def main():
         # then snake moves, while keep the sane length
         if len(snake_body) > length_of_snake:
             del snake_body[0]
-            snake(SNAKE_BLOCK_SIZE, snake_body)
+            snake(snake_unit_size, snake_body)
             for x in snake_body[:-1]:
                 if x == snake_head:
                     running = "game over"
                     game_over()
             pygame.display.update()
-        #if snake hit walls, call game over function: let player choose to continue or exit. 
+        #if snake hit walls, call game over function: let player choose to continue or exit.
         if snake_x_axis >= WINDOW_SIZE or snake_x_axis < 0 or \
            snake_y_axis > WINDOW_SIZE or snake_y_axis < 0:
             running = "game over"
@@ -160,3 +160,4 @@ def main():
         pygame.time.Clock().tick(snake_speed) #control snake's speed
 if __name__ == "__main__":
     main()
+

@@ -8,6 +8,7 @@ import pygame
 # from playsound import playsound
 from pygame import mixer
 # from gtts import gTTS
+import sys
 
 #to convert text to audio, and create welcome.mp3 file.
 # def convert_to_audio(text):
@@ -35,7 +36,8 @@ def snake(snake_unit_size, snake_body):
 
 def rando():
     """get a random x or y axis for snake and food"""
-    return round(random.randrange(0, WINDOW_SIZE - snake_unit_size) / snake_unit_size) * snake_unit_size
+    return round(random.randrange(0, WINDOW_SIZE\
+              - snake_unit_size) / snake_unit_size) * snake_unit_size
 
 def choose():
     """after game over, player will need to choose continue or exit"""
@@ -116,7 +118,7 @@ def main():
                     wrong_key()
             #click x on top of screen to exit game.
             elif event.type == pygame.QUIT:
-                exit()
+                sys.exit()
         #move arrow keys, draw snake's new segment on the new cordinates=>snake move
         snake_x_axis += snake_x_axis_change
         snake_y_axis += snake_y_axis_change
